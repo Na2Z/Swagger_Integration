@@ -1,0 +1,182 @@
+swagger: "2.0"
+info:
+  title: Sample API
+  description: API description in Markdown.
+  version: 1.0.0
+
+host: localhost:3000
+basePath: /
+schemes:
+  - http
+  - https
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: |
+      Authentication types for bearer header
+
+paths:
+  /mahasiswa:
+    get:
+      summary: Get all Mahasiswa
+      responses:
+        "200":
+          description: Successful operation
+
+    post:
+      summary: Create a new Mahasiswa
+      parameters:
+        - in: body
+          name: Mahasiswa
+          description: Mahasiswa object to be created
+          required: true
+          schema:
+            $ref: "#/definitions/Mahasiswa"
+      responses:
+        "201":
+          description: Mahasiswa created successfully
+
+  /mahasiswa/{id}:
+    get:
+      summary: Get a Mahasiswa by ID
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: ID of the Mahasiswa
+          required: true
+      responses:
+        "200":
+          description: Successful operation
+        "404":
+          description: Mahasiswa not found
+
+    put:
+      summary: Update a Mahasiswa
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: ID of the Mahasiswa
+          required: true
+        - in: body
+          name: Mahasiswa
+          description: Mahasiswa object to be updated
+          required: true
+          schema:
+            $ref: "#/definitions/Mahasiswa"
+      responses:
+        "200":
+          description: Mahasiswa updated successfully
+        "404":
+          description: Mahasiswa not found
+
+    delete:
+      summary: Delete a Mahasiswa
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: ID of the Mahasiswa
+          required: true
+      responses:
+        "200":
+          description: Mahasiswa deleted successfully
+        "404":
+          description: Mahasiswa not found
+
+  /matakuliah:
+    get:
+      summary: Get all Mata Kuliah
+      responses:
+        "200":
+          description: Successful operation
+
+    post:
+      summary: Create a new Mata Kuliah
+      parameters:
+        - in: body
+          name: MataKuliah
+          description: Mata Kuliah object to be created
+          required: true
+          schema:
+            $ref: "#/definitions/MataKuliah"
+      responses:
+        "201":
+          description: Mata Kuliah created successfully
+
+  /matakuliah/{id}:
+    get:
+      summary: Get a Mata Kuliah by ID
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: ID of the Mata Kuliah
+          required: true
+      responses:
+        "200":
+          description: Successful operation
+        "404":
+          description: Mata Kuliah not found
+
+    put:
+      summary: Update a Mata Kuliah
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: ID of the Mata Kuliah
+          required: true
+        - in: body
+          name: MataKuliah
+          description: Mata Kuliah object to be updated
+          required: true
+          schema:
+            $ref: "#/definitions/MataKuliah"
+      responses:
+        "200":
+          description: Mata Kuliah updated successfully
+        "404":
+          description: Mata Kuliah not found
+
+    delete:
+      summary: Delete a Mata Kuliah
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: ID of the Mata Kuliah
+          required: true
+      responses:
+        "200":
+          description: Mata Kuliah deleted successfully
+        "404":
+          description: Mata Kuliah not found
+
+definitions:
+  Mahasiswa:
+    type: object
+    properties:
+      nama:
+        type: string
+      nim:
+        type: string
+      kelas:
+        type: string
+      jenisKelamin:
+        type: string
+
+  MataKuliah:
+    type: object
+    properties:
+      kode:
+        type: string
+      nama:
+        type: string
+      sks:
+        type: number
+      kelas:
+        type: string
